@@ -1,5 +1,5 @@
 /*
- * grunt-pack::tar
+ * grunt-pack::zip
  * https://github.com/jussi-kalliokoski/grunt-pack
  *
  * Copyright (c) 2012 Jussi Kalliokoski
@@ -9,14 +9,14 @@
 module.exports = function(grunt) {
 	var log = grunt.log
 
-	grunt.registerMultiTask('tar', 'Packs files or folders into a .tar.gz', function () {
+	grunt.registerMultiTask('zip', 'Packs files or folders into a .zip', function () {
 		var self = this
 		var done = this.async()
 		var files = grunt.file.expandFiles(this.file.src)
 
 		var args = {
-			cmd: 'tar',
-			args: ['pczf', this.file.dest, files]
+			cmd: 'zip',
+			args: ['-r', this.file.dest, files]
 		}
 
 		if (this.file.cwd) {
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 				return done(false)
 			}
 
-			log.success('tar (' + self.file.dest + '): done.')
+			log.success('zip (' + self.file.dest + '): done.')
 			done()
 		})
 	})
