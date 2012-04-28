@@ -16,7 +16,8 @@ module.exports = function(grunt) {
 
 		var args = {
 			cmd: 'tar',
-			args: ['pczf', this.file.dest, files]
+			args: ['pczf', this.file.src]
+				.concat(files)
 		}
 
 		if (this.file.cwd) {

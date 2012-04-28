@@ -16,7 +16,8 @@ module.exports = function(grunt) {
 
 		var args = {
 			cmd: 'zip',
-			args: ['-r', this.file.dest, files]
+			args: ['-r', this.file.dest]
+				.concat(files)
 		}
 
 		if (this.file.cwd) {
