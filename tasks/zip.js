@@ -20,9 +20,9 @@ module.exports = function(grunt) {
 				.concat(files)
 		}
 
-		if (this.file.cwd) {
+		if (this.data.cwd) {
 			args.opts = {
-				cwd: this.file.cwd
+				cwd: this.data.cwd
 			}
 		}
 
