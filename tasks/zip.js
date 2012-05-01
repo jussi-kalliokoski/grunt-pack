@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 	grunt.registerMultiTask('zip', 'Packs files or folders into a .zip', function () {
 		var self = this
 		var done = this.async()
-		var files = grunt.file.expandFiles(this.file.src)
+		var files = grunt.file.expand(this.file.src)
 
 		var args = {
 			cmd: 'zip',

@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 	grunt.registerMultiTask('tar', 'Packs files or folders into a .tar.gz', function () {
 		var self = this
 		var done = this.async()
-		var files = grunt.file.expandFiles(this.file.src)
+		var files = grunt.file.expand(this.file.src)
 
 		var args = {
 			cmd: 'tar',
