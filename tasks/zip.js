@@ -7,22 +7,26 @@
 */
 
 module.exports = function(grunt) {
+	var path = require('path')
 	var log = grunt.log
 
 	grunt.registerMultiTask('zip', 'Packs files or folders into a .zip', function () {
 		var self = this
 		var done = this.async()
-		var files = grunt.file.expand(this.file.src)
+		var cwd = this.data.cwd || '.'
+		var files = grunt.file.expand(this.file.src).map(function (p) {
+			return path.relative(cwd, p)
+		})
 
 		var args = {
 			cmd: 'zip',
-			args: ['-r', this.file.dest]
+			args: ['-r', path.relative(cwd, this.file.dest)]
 				.concat(files)
 		}
 
 		if (this.data.cwd) {
 			args.opts = {
-				cwd: this.data.cwd
+				cwd: cwd
 			}
 		}
 
